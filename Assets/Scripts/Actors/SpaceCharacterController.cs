@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceCharacterController : MonoBehaviour
+[RequireComponent(typeof(CharacterController))]
+public class SpaceCharacterController : MonoBehaviour, IDestructable
 {
-    // Start is called before the first frame update
-    void Start()
+    private CharacterController controller;
+
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
+
+    private void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector3 motion)
     {
-        
+        controller.Move(motion * Time.deltaTime);
+    }
+
+    public void DestroyObject()
+    {
+        throw new System.NotImplementedException();
     }
 }
