@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    [Header("Speed of objects")]
     [SerializeField] private float aimSpeed = 50f;
     [SerializeField] private float xYSpeed = 30f;
     [SerializeField] private float forwardSpeed = 10f;
 
+    [Header("Aerodynamics")]
     [SerializeField] private float rollLimit = 45f;
     [SerializeField] private float rollTime = 0.1f;
-
     [SerializeField] private float pitchLimit = 30f;
     [SerializeField] private float pitchTime = 0.1f;
 
+    [Header("References")]
     [SerializeField] private Transform aimObject;
     [SerializeField] private Transform shipObject;
-
     [SerializeField] private float distanceToAim = 10f;
 
     public void Move(Vector3 movement)
