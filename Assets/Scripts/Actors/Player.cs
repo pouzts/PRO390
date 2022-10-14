@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(ShipController))]
 public class Player : MonoBehaviour, IDestructable
 {
-    private Vector3 movement = Vector3.zero;
+    [SerializeField] private GameObject bulletPrefab;
+
+    private Vector2 movement = Vector2.zero;
 
     private ShipController shipController;
 
@@ -30,13 +32,14 @@ public class Player : MonoBehaviour, IDestructable
     private void OnMovement(InputValue value)
     {
         Vector2 inputValue = value.Get<Vector2>();
-
-        movement.x = inputValue.x;
-        movement.y = inputValue.y;
+        movement = inputValue;
     }
 
     private void OnShoot()
     {
+        if (bulletPrefab != null)
+        { 
         
+        }
     }
 }

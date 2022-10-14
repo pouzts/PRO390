@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField] private float speed = 50f;
-    [SerializeField] private float shipSpeed = 30f;
+    [SerializeField] private float aimSpeed = 50f;
+    [SerializeField] private float xYSpeed = 30f;
+    [SerializeField] private float forwardSpeed = 10f;
 
     [SerializeField] private float rollLimit = 45f;
     [SerializeField] private float rollTime = 0.1f;
@@ -16,11 +17,18 @@ public class ShipController : MonoBehaviour
     [SerializeField] private Transform aimObject;
     [SerializeField] private Transform shipObject;
 
+    [SerializeField] private float distanceToAim = 10f;
+
     public void Move(Vector3 movement)
     {
-        aimObject.position += movement * speed * Time.deltaTime;
+        transform.parent.position += forwardSpeed * Time.deltaTime * Vector3.forward;
+
+        // moving the aim object
+        aimObject.position += aimSpeed * Time.deltaTime * movement;
         KeepInFrame(aimObject);
-        MoveTowardsObjectXY(shipObject, aimObject, shipSpeed);
+
+        // Moving the ship Object
+        MoveTowardsObject(shipObject, aimObject, xYSpeed, distanceToAim);
         RollObject(shipObject, movement.x, rollLimit, rollTime);
         PitchObject(shipObject, movement.y, pitchLimit, pitchTime);
         KeepInFrame(shipObject);
@@ -36,10 +44,11 @@ public class ShipController : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(framePosition);
     }
 
-    private void MoveTowardsObjectXY(Transform obj, Transform target, float speed)
+    private void MoveTowardsObject(Transform obj, Transform target, float xYSpeed, float zDistance = 0)
     {
-        Vector2 targetPos = target.position;
-        obj.position = Vector2.MoveTowards(obj.position, targetPos, speed * Time.deltaTime);
+        Vector3 zVector = Vector3.forward * zDistance;
+        Vector3 targetPos = target.position - zVector;
+        obj.position = Vector3.MoveTowards(obj.position, targetPos, xYSpeed * Time.deltaTime);
     }
 
     private void RollObject(Transform obj, float hAxis, float rollLimit, float lerp)
