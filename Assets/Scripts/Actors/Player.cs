@@ -12,9 +12,8 @@ public class Player : MonoBehaviour, IDestructable
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private float fireRate = 5f;
-    [SerializeField] private int bulletLimit = 5;
 
-    private float fireTime = 0;
+    private float fireTime = 0f;
     private Vector2 movement = Vector2.zero;
     
     private ShipController shipController;
@@ -33,7 +32,7 @@ public class Player : MonoBehaviour, IDestructable
 
     public void DestroyObject()
     {
-        
+        print("I am dead");
     }
 
     // These methods are for input via the Input System
@@ -48,11 +47,8 @@ public class Player : MonoBehaviour, IDestructable
         if (bulletPrefab != null && fireTime <= 0)
         {
             Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-            
-            var bullets = FindObjectsOfType<Bullet>().Where(x => CompareTag(x.bulletTag));
 
-            if (bullets.Count() >= bulletLimit)
-                fireTime = fireRate;
+            fireTime = fireRate;
         }
     }
 }

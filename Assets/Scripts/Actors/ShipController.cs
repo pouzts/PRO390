@@ -28,7 +28,7 @@ public class ShipController : MonoBehaviour
         aimObject.position += aimSpeed * Time.deltaTime * movement;
         KeepInFrame(aimObject);
 
-        // Moving the ship Object
+        // Moving the ship object
         MoveTowardsObject(shipObject, aimObject, xYSpeed, distanceToAim);
         RollObject(shipObject, movement.x, rollLimit, rollTime);
         PitchObject(shipObject, movement.y, pitchLimit, pitchTime);
