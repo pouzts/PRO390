@@ -22,10 +22,10 @@ public class ShipController : MonoBehaviour
 
     public void Move(Vector3 movement)
     {
-        transform.parent.position += forwardSpeed * Time.deltaTime * Vector3.forward;
+        transform.parent.Translate(forwardSpeed * Time.deltaTime * Vector3.forward);
 
         // moving the aim object
-        aimObject.position += aimSpeed * Time.deltaTime * movement;
+        aimObject.Translate(aimSpeed * Time.deltaTime * movement);
         KeepInFrame(aimObject);
 
         // Moving the ship object

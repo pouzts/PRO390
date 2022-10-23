@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2826865191848243025}
   - component: {fileID: 6939153620531409386}
   - component: {fileID: 4137552186295009891}
+  - component: {fileID: 5545215481931702190}
   - component: {fileID: 8798889335322782981}
   - component: {fileID: 2825761438511864196}
   - component: {fileID: 2825761438511864199}
@@ -52,8 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+  invincableTime: 10
   destroyObject: 1
   destroyRoot: 0
+  invinCollider: {fileID: 0}
 --- !u!114 &6939153620531409386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,9 +82,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec15cb3051255141b0140638592dafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
+  bulletSpeed: 100
   lifeTime: 3
   space: 1
+--- !u!114 &5545215481931702190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825761438511864217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0349555f756eea34ead8ce76af8d0663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 2100000, guid: 999ac4e5eb028a84f92d5a6c419b07aa, type: 2}
+  lowVisMaterial: {fileID: 2100000, guid: 0b59b2bfacee5834eb73a7b1d428feae, type: 2}
+  outline: {fileID: 8798889335322782981}
 --- !u!114 &8798889335322782981
 MonoBehaviour:
   m_ObjectHideFlags: 0
