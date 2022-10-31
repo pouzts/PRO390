@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [Header("Bullet Reference and Fields")]
+    [Header("Bullet References")]
     public Transform[] bulletSpawn;
-    
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private AudioSource bulletSound;
+
+    [Header("Bullet Fields")]
     [SerializeField] private float fireRate = 5f;
 
     private float fireTime = 0f;
@@ -21,6 +23,8 @@ public class Weapon : MonoBehaviour
     {
         if (bulletPrefab != null && fireTime <= 0)
         {
+            bulletSound.Play();
+
             foreach (var b in bulletSpawn)
                 Instantiate(bulletPrefab, b.position, b.rotation);
 

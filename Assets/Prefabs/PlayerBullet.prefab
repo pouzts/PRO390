@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  invincableTime: 10
+  invincableTime: 0
   destroyObject: 1
   destroyRoot: 0
   invinCollider: {fileID: 0}
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 100
-  lifeTime: 3
+  lifeTime: 2
   space: 1
 --- !u!114 &5545215481931702190
 MonoBehaviour:
