@@ -7,7 +7,7 @@ public class ShipController : MonoBehaviour
     [Header("Speed of objects")]
     [SerializeField] private float aimSpeed = 50f;
     [SerializeField] private float xYSpeed = 30f;
-    //[SerializeField] private float forwardSpeed = 10f;
+    [SerializeField] private float forwardSpeed = 10f;
 
     [Header("Aerodynamics")]
     [SerializeField] private float rollLimit = 45f;
@@ -22,7 +22,7 @@ public class ShipController : MonoBehaviour
 
     public void Move(Vector3 movement)
     {
-        //transform.parent.Translate(forwardSpeed * Time.deltaTime * Vector3.forward);
+        transform.parent.Translate(forwardSpeed * Time.deltaTime * Vector3.forward);
 
         // moving the aim object
         aimObject.Translate(aimSpeed * Time.deltaTime * movement);

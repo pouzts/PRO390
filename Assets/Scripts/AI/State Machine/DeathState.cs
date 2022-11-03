@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathState : State
 {
-    public DeathState(string name, StateAgent agent) : base(name, agent) { }
+    public DeathState(StateAgent agent, string name) : base(agent, name) { }
 
     public override void OnEnter()
     {

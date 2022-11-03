@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class RefValue<T> where T : struct
 {
-    public T Value { get; private set; }
+    public T value;
 
-    public RefValue(T value) => Value = value;
-
-    public static implicit operator T(RefValue<T> refValue) { return refValue.Value; }
+    public static implicit operator T(RefValue<T> refValue) { return refValue.value; }
 }

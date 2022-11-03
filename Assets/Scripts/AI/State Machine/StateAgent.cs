@@ -4,13 +4,19 @@ using UnityEngine;
 
 public abstract class StateAgent : MonoBehaviour
 {
-    void Start()
+    protected StateMachine stateMachine = new();
+
+    private void Start()
     {
-        
+        OnStart();
     }
 
-    void Update()
+    private void Update()
     {
-        
+        stateMachine.Update();
+        OnUpdate();
     }
+
+    protected abstract void OnStart();
+    protected abstract void OnUpdate();
 }

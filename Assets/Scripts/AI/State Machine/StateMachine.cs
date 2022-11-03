@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine
 {
-    // create a public dictionary that holds a state and a
+    // create a private dictionary that holds a state and a
     // list that has a key value pair of transitions and states
-    public Dictionary<State, List<KeyValuePair<Transition, State>>> stateTransitions = new(); 
+    private readonly Dictionary<State, List<KeyValuePair<Transition, State>>> stateTransitions = new Dictionary<State, List<KeyValuePair<Transition, State>>>(); 
 
-    // create a public state that holds the current state
-    public State curState;
+    // create a private state that holds the current state
+    private State curState;
 
-    private void Update()
+    public void Update()
     {
         // if the current state is null, return
         if (curState == null)

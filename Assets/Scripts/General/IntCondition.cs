@@ -22,22 +22,22 @@ public class IntCondition : Condition
         switch (predicate)
         {
             case Predicate.Less:
-                result = left.Value < right;
+                result = left.value < right;
                 break;
             case Predicate.LessOrEqual:
-                result = left.Value <= right;
+                result = left.value <= right;
                 break;
             case Predicate.Equals:
-                result = left.Value == right;
+                result = left.value == right;
                 break;
             case Predicate.NotEquals:
-                result = left.Value != right;
+                result = left.value != right;
                 break;
             case Predicate.Greater:
-                result = left.Value > right;
+                result = left.value > right;
                 break;
             case Predicate.GreaterOrEqual:
-                result = left.Value >= right;
+                result = left.value >= right;
                 break;
             default:
                 break;

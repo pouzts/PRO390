@@ -15,6 +15,6 @@ public class BoolCondition : Condition
 
     public override bool IsTrue()
     {
-        return left.Value == right;
+        return left.value == right;
     }
 }

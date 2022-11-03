@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : StateAgent, IDestructable
 {
-    private void Start()
+    [SerializeField] RefValue<int> test;
+
+    protected override void OnStart()
     {
         
     }
 
-    private void Update()
+    protected override void OnUpdate()
     {
         
+    }
+
+    public void DestroyObject()
+    {
+        //throw new System.NotImplementedException();
     }
 }
