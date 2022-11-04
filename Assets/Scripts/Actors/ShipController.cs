@@ -26,13 +26,12 @@ public class ShipController : MonoBehaviour
 
         // moving the aim object
         aimObject.Translate(aimSpeed * Time.deltaTime * movement);
-        KeepInFrame(aimObject);
+        //Utilities.Clamp(aimObject.position, Vector2.one, -Vector2.one);
 
         // Moving the ship object
         MoveTowardsObject(shipObject, aimObject, xYSpeed, distanceToAim);
         RollObject(shipObject, movement.x, rollLimit, rollTime);
         PitchObject(shipObject, movement.y, pitchLimit, pitchTime);
-        KeepInFrame(shipObject);
     }
 
     private void KeepInFrame(Transform transform)

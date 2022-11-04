@@ -8,7 +8,10 @@ public class Enemy : StateAgent, IDestructable
 
     protected override void OnStart()
     {
-        
+        //stateMachine.AddState();
+        //stateMachine.AddState();
+        //stateMachine.AddState();
+        //stateMachine.AddState();
     }
 
     protected override void OnUpdate()
