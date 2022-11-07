@@ -9,6 +9,10 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float xYSpeed = 30f;
     [SerializeField] private float forwardSpeed = 10f;
 
+    [Header("Camera Controls")]
+    [SerializeField] [Range(0f, 1f)] private float cameraMin = 0.35f;
+    [SerializeField] [Range(0f, 1f)] private float cameraMax = 0.65f;
+
     [Header("Aerodynamics")]
     [SerializeField] private float rollLimit = 45f;
     [SerializeField] private float rollTime = 0.1f;
@@ -26,7 +30,7 @@ public class ShipController : MonoBehaviour
 
         // moving the aim object
         aimObject.Translate(aimSpeed * Time.deltaTime * movement);
-        //Utilities.Clamp(aimObject.position, Vector2.one, -Vector2.one);
+        KeepInFrame(aimObject, cameraMin, cameraMax);
 
         // Moving the ship object
         MoveTowardsObject(shipObject, aimObject, xYSpeed, distanceToAim);
@@ -34,12 +38,12 @@ public class ShipController : MonoBehaviour
         PitchObject(shipObject, movement.y, pitchLimit, pitchTime);
     }
 
-    private void KeepInFrame(Transform transform)
+    private void KeepInFrame(Transform transform, float min = 0, float max = 1)
     {
         Vector3 framePosition = Camera.main.WorldToViewportPoint(transform.position);
 
-        framePosition.x = Mathf.Clamp01(framePosition.x);
-        framePosition.y = Mathf.Clamp01(framePosition.y);
+        framePosition.x = Mathf.Clamp(Mathf.Clamp01(framePosition.x), min, max);
+        framePosition.y = Mathf.Clamp(Mathf.Clamp01(framePosition.y), min, max);
 
         transform.position = Camera.main.ViewportToWorldPoint(framePosition);
     }

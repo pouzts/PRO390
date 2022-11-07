@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class StateAgent : MonoBehaviour
 {
+    public GameObject Target { get; set; }
+
     protected StateMachine stateMachine = new();
 
     private void Start()
