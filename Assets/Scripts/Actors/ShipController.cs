@@ -18,7 +18,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float rollTime = 0.1f;
     [SerializeField] private float pitchLimit = 30f;
     [SerializeField] private float pitchTime = 0.1f;
-
+    
     [Header("References")]
     [SerializeField] private Transform aimObject;
     [SerializeField] private Transform shipObject;
@@ -35,7 +35,7 @@ public class ShipController : MonoBehaviour
         // Moving the ship object
         MoveTowardsObject(shipObject, aimObject, xYSpeed, distanceToAim);
         RollObject(shipObject, movement.x, rollLimit, rollTime);
-        PitchObject(shipObject, movement.y, pitchLimit, pitchTime);
+        PitchObject(shipObject,movement.y, pitchLimit, pitchTime);
     }
 
     private void KeepInFrame(Transform transform, float min = 0, float max = 1)
@@ -61,9 +61,9 @@ public class ShipController : MonoBehaviour
         obj.localEulerAngles = new(eulerAngles.x, eulerAngles.y, Mathf.LerpAngle(eulerAngles.z, -hAxis * rollLimit, lerp));
     }
 
-    private void PitchObject(Transform obj, float vAxis, float rollLimit, float lerp)
+    private void PitchObject(Transform obj, float vAxis, float pitchLimit, float lerp)
     {
         Vector3 eulerAngles = obj.localEulerAngles;
-        obj.localEulerAngles = new(Mathf.LerpAngle(eulerAngles.x, -vAxis * rollLimit, lerp), eulerAngles.y, eulerAngles.z);
+        obj.localEulerAngles = new(Mathf.LerpAngle(eulerAngles.x, -vAxis * pitchLimit, lerp), eulerAngles.y, eulerAngles.z);
     }
 }

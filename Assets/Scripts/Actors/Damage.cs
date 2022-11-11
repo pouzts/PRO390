@@ -8,7 +8,7 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out Health health))
+        if (other.gameObject.TryGetComponent(out Health health) && !other.gameObject.CompareTag(gameObject.tag))
             health.Damage(damageDealt);
     }
 }

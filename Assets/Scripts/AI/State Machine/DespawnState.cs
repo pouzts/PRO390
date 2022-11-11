@@ -10,7 +10,7 @@ public class DespawnState : State
 
     public override void OnEnter()
     {
-        
+        Object.Destroy(Agent.gameObject);
     }
 
     public override void OnExit()

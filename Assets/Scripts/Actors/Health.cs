@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     [SerializeField] private bool destroyRoot = false;
 
     [SerializeField] private Collider invinCollider;
+    [SerializeField] private Slider healthBar;
 
     public float CurHealth { get; set; }
     
@@ -20,6 +21,12 @@ public class Health : MonoBehaviour
     private void Start()
     {
         CurHealth = maxHealth;
+
+        if (healthBar != null)
+        {
+            healthBar.maxValue = maxHealth;
+            healthBar.value = CurHealth;
+        }
     }
 
     private void Update()
@@ -47,6 +54,9 @@ public class Health : MonoBehaviour
     { 
         CurHealth -= health;
 
+        if (healthBar != null)
+            healthBar.value = CurHealth;
+
         if (!isDead && CurHealth <= 0f)
         { 
             CurHealth = 0f;
@@ -67,6 +77,7 @@ public class Health : MonoBehaviour
         }
 
         timer = invincableTime;
+
         if (invinCollider != null)
             invinCollider.enabled = false;
     }

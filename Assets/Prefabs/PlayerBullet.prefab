@@ -57,6 +57,7 @@ MonoBehaviour:
   destroyObject: 1
   destroyRoot: 0
   invinCollider: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &6939153620531409386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +86,7 @@ MonoBehaviour:
   bulletSpeed: 100
   lifeTime: 2
   space: 1
+  direction: {x: 0, y: 0, z: 1}
 --- !u!114 &5545215481931702190
 MonoBehaviour:
   m_ObjectHideFlags: 0

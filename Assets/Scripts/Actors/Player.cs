@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour, IDestructable
 {
     [SerializeField] private Weapon weapon;
-
     private Vector2 movement = Vector2.zero;
     private ShipController shipController;
 

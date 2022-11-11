@@ -4,7 +4,13 @@ using UnityEngine;
 
 public abstract class StateAgent : MonoBehaviour
 {
+    public Movement movement;
+
     public GameObject Target { get; set; }
+
+    public RefValue<bool> HasSpawned { get; set; } = new RefValue<bool>();
+    public RefValue<float> Timer { get; set; } = new RefValue<float>();
+    public RefValue<float> TargetDistance { get; set; } = new RefValue<float>();
 
     protected StateMachine stateMachine = new();
 

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class StateMachine
 {
-    // create a private dictionary that holds a state and a
+    // create a public dictionary that holds a state and a
     // list that has a key value pair of transitions and states
-    private readonly Dictionary<State, List<KeyValuePair<Transition, State>>> stateTransitions = new Dictionary<State, List<KeyValuePair<Transition, State>>>(); 
+    public Dictionary<State, List<KeyValuePair<Transition, State>>> stateTransitions = new Dictionary<State, List<KeyValuePair<Transition, State>>>(); 
 
-    // create a private state that holds the current state
-    private State curState;
+    // create a public state that holds the current state
+    public State curState;
 
     public void Update()
     {
@@ -53,7 +53,7 @@ public class StateMachine
         // check if the dictionary does not contain state
         if (!stateTransitions.ContainsKey(state))
             // set the value to a new list of transition and state
-            stateTransitions[state] = new List<KeyValuePair<Transition, State>>();
+            stateTransitions.Add(state, new List<KeyValuePair<Transition, State>>());
     }
 
     public void AddTransition(State stateFrom, Transition transition, State stateTo) 
