@@ -8,8 +8,11 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour, IDestructable
 {
     [SerializeField] private Weapon weapon;
-    private Vector2 movement = Vector2.zero;
+
     private ShipController shipController;
+    private Vector2 movement = Vector2.zero;
+
+    private Coroutine fireCoroutine;
 
     private void Start()
     {
@@ -27,14 +30,39 @@ public class Player : MonoBehaviour, IDestructable
     }
 
     // These methods are for input via the Input System
-    private void OnMovement(InputValue value)
+    public void OnMovement(InputAction.CallbackContext context)
     {
-        Vector2 inputValue = value.Get<Vector2>();
+        Vector2 inputValue = context.ReadValue<Vector2>();
         movement = inputValue;
     }
 
-    private void OnShoot()
+    public void OnShoot(InputAction.CallbackContext context)
     {
-        weapon.Shoot();
+        if (context.performed)
+        {
+            fireCoroutine = StartCoroutine(Shoot());
+        }
+        else
+        {
+            if (fireCoroutine != null)
+                StopCoroutine(fireCoroutine);
+        }
+    }
+
+    private IEnumerator Shoot()
+    {
+        if (AccessibilityManager.Instance.RapidFireMode)
+        {
+            while (true)
+            {
+                weapon.Shoot();
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        else
+        {
+            weapon.Shoot();
+            yield return null;
+        }
     }
 }

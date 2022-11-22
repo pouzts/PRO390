@@ -10,7 +10,6 @@ public abstract class StateAgent : MonoBehaviour
 
     public RefValue<bool> HasSpawned { get; set; } = new RefValue<bool>();
     public RefValue<float> Timer { get; set; } = new RefValue<float>();
-    public RefValue<float> TargetDistance { get; set; } = new RefValue<float>();
 
     protected StateMachine stateMachine = new();
 

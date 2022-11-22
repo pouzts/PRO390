@@ -38,8 +38,6 @@ public class Health : MonoBehaviour
             if (invinCollider != null)
                 invinCollider.enabled = true;
         }
-
-        print(CurHealth);
     }
 
     public void Heal(float health)

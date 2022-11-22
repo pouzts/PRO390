@@ -10,7 +10,6 @@ public class SpawnState : State
 
     public override void OnEnter()
     {
-        Agent.TargetDistance.value = (Agent.Target != null) ? Vector3.Distance(Agent.transform.position, Agent.Target.transform.position) : float.MinValue;
         Agent.HasSpawned.value = true;
     }
 

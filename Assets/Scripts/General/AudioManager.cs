@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -8,16 +7,16 @@ public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField] private AudioMixer audioMixer;
 
-    private float masterVolume = 1.0f;
-    private float musicVolume = 1.0f;
-    private float sfxVolume = 1.0f;
+    private float masterVolume = 0.0f;
+    private float musicVolume = 0.0f;
+    private float sfxVolume = 0.0f;
 
     public float MasterVolume
     {
         get => masterVolume;
         set 
         { 
-            masterVolume = Mathf.Clamp01(value);
+            masterVolume = Mathf.Clamp(value, -80f, 20f);
         }
     }
 
@@ -26,7 +25,7 @@ public class AudioManager : Singleton<AudioManager>
         get => musicVolume;
         set 
         { 
-            musicVolume = Mathf.Clamp01(value);
+            musicVolume = Mathf.Clamp(value, -80f, 20f);
         } 
     }
 
@@ -35,13 +34,8 @@ public class AudioManager : Singleton<AudioManager>
         get => sfxVolume;
         set
         {
-            sfxVolume = Mathf.Clamp01(value);
+            sfxVolume = Mathf.Clamp(value, -80f, 20f);
         }
-    }
-
-    private void Start()
-    {
-        SFXVolume = 0.5f;
     }
 
     private void Update()

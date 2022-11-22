@@ -8,7 +8,6 @@ public class ChaseState : State
 
     public override void OnEnter()
     {
-        Agent.TargetDistance.value = (Agent.Target != null) ? Vector3.Distance(Agent.transform.position, Agent.Target.transform.position) : float.MinValue;
     }
 
     public override void OnExit()
@@ -18,7 +17,6 @@ public class ChaseState : State
 
     public override void OnUpdate()
     {
-        Agent.TargetDistance.value = (Agent.Target != null) ? Vector3.Distance(Agent.transform.position, Agent.Target.transform.position) : float.MinValue;
         
         if (Agent.Target != null)
             Agent.movement.MoveTowards(Agent.Target.transform.position);

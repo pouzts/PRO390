@@ -86,7 +86,7 @@ MonoBehaviour:
   bulletSpeed: 100
   lifeTime: 2
   space: 1
-  direction: {x: 0, y: 0, z: -1}
+  direction: {x: 0, y: 0, z: 1}
 --- !u!114 &5545215481931702190
 MonoBehaviour:
   m_ObjectHideFlags: 0

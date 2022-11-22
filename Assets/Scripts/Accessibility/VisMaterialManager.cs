@@ -20,11 +20,14 @@ public class VisMaterialManager : MonoBehaviour
     {
         // sets the material
         if (normalMaterial != null && lowVisMaterial != null)
+        { 
             material = AccessibilityManager.Instance.HighContrastMode ? lowVisMaterial : normalMaterial;
-
-        if (m_renderer != null)
             m_renderer.material = material;
+        }
 
-        outline.enabled = !AccessibilityManager.Instance.HighContrastMode;
+        outline.enabled = AccessibilityManager.Instance.ColorBlindMode;
+
+        if (outline.enabled)
+            outline.enabled = !AccessibilityManager.Instance.HighContrastMode;
     }
 }
