@@ -9,19 +9,29 @@ public class PlayerCrosshair : MonoBehaviour
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float targetDistance = 10f;
 
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer1;
+    [SerializeField] private SpriteRenderer spriteRenderer2;
+    [SerializeField] private AudioSource audioSource;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = defaultCrosshair;
+        spriteRenderer1.sprite = defaultCrosshair;
+        spriteRenderer2.sprite = defaultCrosshair;
     }
 
     private void FixedUpdate()
     {
         if (Physics.Raycast(transform.position, Vector3.forward, targetDistance, targetLayer))
-            spriteRenderer.sprite = targetCrosshair;
+        {
+            spriteRenderer1.enabled = false;
+            spriteRenderer2.sprite = targetCrosshair;
+            if (audioSource != null)
+                audioSource.Play();
+        }
         else
-            spriteRenderer.sprite = defaultCrosshair;
+        {
+            spriteRenderer1.enabled = true;
+            spriteRenderer2.sprite = defaultCrosshair;
+        }
     }
 }

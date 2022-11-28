@@ -1,5 +1,5 @@
 {
-    "name": "Player",
+    "name": "Game",
     "maps": [
         {
             "name": "Player",
@@ -18,6 +18,33 @@
                     "name": "Shoot",
                     "type": "Button",
                     "id": "2e45b851-47db-4e38-b39a-dc8975b3e04b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ColorBlindMode",
+                    "type": "Button",
+                    "id": "dcf57969-e0d7-4471-8664-cbe97d19f47c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RapidFireMode",
+                    "type": "Button",
+                    "id": "eb126569-c1f7-4ba1-84da-3173195a8563",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HiContrastMode",
+                    "type": "Button",
+                    "id": "973b3274-4b99-4ba3-847b-9fb2708790ea",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -110,6 +137,67 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b166bb2d-d896-438d-95ea-9ab5da07fd1d",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ColorBlindMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5104747-3485-4505-8934-20231af34ebc",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "RapidFireMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af19ea01-1b56-4512-a860-684a98a4fe85",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "HiContrastMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "4fea1d72-e786-4c53-b337-dfdc7b38cc1a",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "4ba13257-b6c3-4787-8e36-33f1917bc90e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c00cb969-cdf8-4b8a-97f9-36beb52792f8",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

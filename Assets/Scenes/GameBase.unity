@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367e9a754e7953143a88c51c35b430a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointsAtDeath: 10
 --- !u!4 &39643653
 Transform:
   m_ObjectHideFlags: 0
@@ -181,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c033cc1b56af60c4dbd1c906d21e0114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highContrastMode: 0
 --- !u!114 &39643655
 MonoBehaviour:
   m_ObjectHideFlags: 0
