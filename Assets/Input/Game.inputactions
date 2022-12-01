@@ -180,7 +180,7 @@
             "id": "4fea1d72-e786-4c53-b337-dfdc7b38cc1a",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "4ba13257-b6c3-4787-8e36-33f1917bc90e",
                     "expectedControlType": "Button",
@@ -193,11 +193,22 @@
                 {
                     "name": "",
                     "id": "c00cb969-cdf8-4b8a-97f9-36beb52792f8",
-                    "path": "",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": "KeyboardMouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6b54f8e-4e3b-42cf-b874-79eafc53eda6",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

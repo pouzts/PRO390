@@ -202,7 +202,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
             ""id"": ""4fea1d72-e786-4c53-b337-dfdc7b38cc1a"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""4ba13257-b6c3-4787-8e36-33f1917bc90e"",
                     ""expectedControlType"": ""Button"",
@@ -215,11 +215,22 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c00cb969-cdf8-4b8a-97f9-36beb52792f8"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6b54f8e-4e3b-42cf-b874-79eafc53eda6"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -265,7 +276,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_Player_HiContrastMode = m_Player.FindAction("HiContrastMode", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -390,12 +401,12 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Newaction;
+    private readonly InputAction m_UI_Pause;
     public struct UIActions
     {
         private @PlayerControl m_Wrapper;
         public UIActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -405,16 +416,16 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
+                @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -447,6 +458,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     }
     public interface IUIActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
