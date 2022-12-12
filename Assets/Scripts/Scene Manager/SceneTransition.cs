@@ -12,12 +12,22 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private float duration = 2f;
     [SerializeField] private bool startAtStart = false;
 
-    public bool IsDone { get; set; } = false;
+    private bool isDone = false;
 
     private void Start()
     {
         if (startAtStart)
             FadeIn();
+    }
+
+    public void TransitionScene(string sceneName)
+    {
+        FadeIn();
+        
+        if (isDone)
+            SceneLoader.Load(sceneName);
+        
+        FadeOut();
     }
 
     public void FadeIn() 
@@ -32,7 +42,7 @@ public class SceneTransition : MonoBehaviour
 
     private IEnumerator FadeScene(Color startColor, Color endColor, float duration)
     {
-        IsDone = false;
+        isDone = false;
         
         float timer = 0;
 
@@ -46,6 +56,6 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
 
-        IsDone = true;
+        isDone = true;
     }
 }

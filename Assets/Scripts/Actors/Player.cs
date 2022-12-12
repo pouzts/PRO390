@@ -7,34 +7,59 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(ShipController))]
 public class Player : MonoBehaviour, IDestructable
 {
+    [SerializeField] private GameObject deathPrefab;
     [SerializeField] private Weapon weapon;
+    
+    [SerializeField] private float fireRate = 0.2f;
 
     private ShipController shipController;
-    private Vector2 movement = Vector2.zero;
+    private PlayerControls playerControls;
+
+    private InputAction moveAction;
+    private InputAction shootAction;
 
     private Coroutine fireCoroutine;
 
-    private void Start()
+    private void Awake()
     {
+        playerControls = new();
         shipController = GetComponent<ShipController>();
+    }
+
+    private void OnEnable()
+    {
+        moveAction = playerControls.Player.Movement;
+        moveAction.Enable();
+
+        shootAction = playerControls.Player.Shoot;
+        shootAction.Enable();
+        shootAction.started += OnShoot;
+        shootAction.performed += OnShoot;
+        shootAction.canceled += OnShoot;
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+
+        shootAction.started -= OnShoot;
+        shootAction.performed -= OnShoot;
+        shootAction.canceled -= OnShoot;
+        shootAction.Disable();
     }
 
     private void Update()
     {
+        Vector2 movement = moveAction.ReadValue<Vector2>();
         shipController.Move(movement);
     }
 
     public void DestroyObject()
     {
-        print("I am dead");
+        StartCoroutine(OnDeath());
     }
 
     // These methods are for input via the Input System
-    public void OnMovement(InputAction.CallbackContext context)
-    {
-        Vector2 inputValue = context.ReadValue<Vector2>();
-        movement = inputValue;
-    }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
@@ -49,6 +74,7 @@ public class Player : MonoBehaviour, IDestructable
         }
     }
 
+    // Methods for coroutines
     private IEnumerator Shoot()
     {
         if (AccessibilityManager.Instance.RapidFireMode)
@@ -56,7 +82,7 @@ public class Player : MonoBehaviour, IDestructable
             while (true)
             {
                 weapon.Shoot();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(fireRate);
             }
         }
         else
@@ -64,5 +90,15 @@ public class Player : MonoBehaviour, IDestructable
             weapon.Shoot();
             yield return null;
         }
+    }
+
+    private IEnumerator OnDeath()
+    {
+        if (deathPrefab != null)
+            Instantiate(deathPrefab, gameObject.transform);
+        
+        yield return new WaitForSeconds(5.0f);
+        
+        GameManager.Instance.GameState = GameState.PlayerDead;
     }
 }

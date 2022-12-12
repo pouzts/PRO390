@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @PlayerControl : IInputActionCollection2, IDisposable
+public partial class @PlayerControls : IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PlayerControl()
+    public @PlayerControls()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Game"",
@@ -40,33 +40,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""2e45b851-47db-4e38-b39a-dc8975b3e04b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ColorBlindMode"",
-                    ""type"": ""Button"",
-                    ""id"": ""dcf57969-e0d7-4471-8664-cbe97d19f47c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RapidFireMode"",
-                    ""type"": ""Button"",
-                    ""id"": ""eb126569-c1f7-4ba1-84da-3173195a8563"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""HiContrastMode"",
-                    ""type"": ""Button"",
-                    ""id"": ""973b3274-4b99-4ba3-847b-9fb2708790ea"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -135,7 +108,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Xbox"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -143,10 +116,10 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2ba0a05c-6aa7-40c1-adb1-2131845a9c64"",
-                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Xbox"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -161,44 +134,11 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b166bb2d-d896-438d-95ea-9ab5da07fd1d"",
-                    ""path"": ""<Keyboard>/f1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""ColorBlindMode"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a5104747-3485-4505-8934-20231af34ebc"",
-                    ""path"": ""<Keyboard>/f3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""RapidFireMode"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""af19ea01-1b56-4512-a860-684a98a4fe85"",
-                    ""path"": ""<Keyboard>/f2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""HiContrastMode"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""UI"",
+            ""name"": ""Pause"",
             ""id"": ""4fea1d72-e786-4c53-b337-dfdc7b38cc1a"",
             ""actions"": [
                 {
@@ -226,11 +166,79 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d6b54f8e-4e3b-42cf-b874-79eafc53eda6"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Xbox"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""DevShortcuts"",
+            ""id"": ""4b90db2c-25a1-4ff9-9c02-5d6942a3809a"",
+            ""actions"": [
+                {
+                    ""name"": ""ColorBlindMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""367dc499-b70c-4bf0-b4ca-3e443bc55305"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RapidFireMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""7206754d-d375-4be0-89e5-4e097fb5c12a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HiContrastMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""283d920e-722a-4dc9-9d40-675ba107529b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""341916f0-bba2-4d7e-b7f0-64791b93d5ab"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""ColorBlindMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""634a7d09-c980-484b-a7ed-e5bd3099a57b"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""RapidFireMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f4aa303-a3f6-4300-9973-442c944b4bcf"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""HiContrastMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -255,12 +263,12 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Xbox"",
-            ""bindingGroup"": ""Xbox"",
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<XInputController>"",
-                    ""isOptional"": true,
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
                     ""isOR"": false
                 }
             ]
@@ -271,12 +279,14 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_ColorBlindMode = m_Player.FindAction("ColorBlindMode", throwIfNotFound: true);
-        m_Player_RapidFireMode = m_Player.FindAction("RapidFireMode", throwIfNotFound: true);
-        m_Player_HiContrastMode = m_Player.FindAction("HiContrastMode", throwIfNotFound: true);
-        // UI
-        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        // Pause
+        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
+        m_Pause_Pause = m_Pause.FindAction("Pause", throwIfNotFound: true);
+        // DevShortcuts
+        m_DevShortcuts = asset.FindActionMap("DevShortcuts", throwIfNotFound: true);
+        m_DevShortcuts_ColorBlindMode = m_DevShortcuts.FindAction("ColorBlindMode", throwIfNotFound: true);
+        m_DevShortcuts_RapidFireMode = m_DevShortcuts.FindAction("RapidFireMode", throwIfNotFound: true);
+        m_DevShortcuts_HiContrastMode = m_DevShortcuts.FindAction("HiContrastMode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -338,18 +348,12 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_ColorBlindMode;
-    private readonly InputAction m_Player_RapidFireMode;
-    private readonly InputAction m_Player_HiContrastMode;
     public struct PlayerActions
     {
-        private @PlayerControl m_Wrapper;
-        public PlayerActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        private @PlayerControls m_Wrapper;
+        public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-        public InputAction @ColorBlindMode => m_Wrapper.m_Player_ColorBlindMode;
-        public InputAction @RapidFireMode => m_Wrapper.m_Player_RapidFireMode;
-        public InputAction @HiContrastMode => m_Wrapper.m_Player_HiContrastMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,15 +369,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                @ColorBlindMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnColorBlindMode;
-                @ColorBlindMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnColorBlindMode;
-                @ColorBlindMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnColorBlindMode;
-                @RapidFireMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRapidFireMode;
-                @RapidFireMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRapidFireMode;
-                @RapidFireMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRapidFireMode;
-                @HiContrastMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHiContrastMode;
-                @HiContrastMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHiContrastMode;
-                @HiContrastMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHiContrastMode;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -384,6 +379,79 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+            }
+        }
+    }
+    public PlayerActions @Player => new PlayerActions(this);
+
+    // Pause
+    private readonly InputActionMap m_Pause;
+    private IPauseActions m_PauseActionsCallbackInterface;
+    private readonly InputAction m_Pause_Pause;
+    public struct PauseActions
+    {
+        private @PlayerControls m_Wrapper;
+        public PauseActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Pause_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Pause; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
+        public void SetCallbacks(IPauseActions instance)
+        {
+            if (m_Wrapper.m_PauseActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_PauseActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PauseActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PauseActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_PauseActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public PauseActions @Pause => new PauseActions(this);
+
+    // DevShortcuts
+    private readonly InputActionMap m_DevShortcuts;
+    private IDevShortcutsActions m_DevShortcutsActionsCallbackInterface;
+    private readonly InputAction m_DevShortcuts_ColorBlindMode;
+    private readonly InputAction m_DevShortcuts_RapidFireMode;
+    private readonly InputAction m_DevShortcuts_HiContrastMode;
+    public struct DevShortcutsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public DevShortcutsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ColorBlindMode => m_Wrapper.m_DevShortcuts_ColorBlindMode;
+        public InputAction @RapidFireMode => m_Wrapper.m_DevShortcuts_RapidFireMode;
+        public InputAction @HiContrastMode => m_Wrapper.m_DevShortcuts_HiContrastMode;
+        public InputActionMap Get() { return m_Wrapper.m_DevShortcuts; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DevShortcutsActions set) { return set.Get(); }
+        public void SetCallbacks(IDevShortcutsActions instance)
+        {
+            if (m_Wrapper.m_DevShortcutsActionsCallbackInterface != null)
+            {
+                @ColorBlindMode.started -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnColorBlindMode;
+                @ColorBlindMode.performed -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnColorBlindMode;
+                @ColorBlindMode.canceled -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnColorBlindMode;
+                @RapidFireMode.started -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnRapidFireMode;
+                @RapidFireMode.performed -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnRapidFireMode;
+                @RapidFireMode.canceled -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnRapidFireMode;
+                @HiContrastMode.started -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnHiContrastMode;
+                @HiContrastMode.performed -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnHiContrastMode;
+                @HiContrastMode.canceled -= m_Wrapper.m_DevShortcutsActionsCallbackInterface.OnHiContrastMode;
+            }
+            m_Wrapper.m_DevShortcutsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
                 @ColorBlindMode.started += instance.OnColorBlindMode;
                 @ColorBlindMode.performed += instance.OnColorBlindMode;
                 @ColorBlindMode.canceled += instance.OnColorBlindMode;
@@ -396,40 +464,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
-
-    // UI
-    private readonly InputActionMap m_UI;
-    private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Pause;
-    public struct UIActions
-    {
-        private @PlayerControl m_Wrapper;
-        public UIActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Pause => m_Wrapper.m_UI_Pause;
-        public InputActionMap Get() { return m_Wrapper.m_UI; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
-        public void SetCallbacks(IUIActions instance)
-        {
-            if (m_Wrapper.m_UIActionsCallbackInterface != null)
-            {
-                @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
-            }
-            m_Wrapper.m_UIActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
-            }
-        }
-    }
-    public UIActions @UI => new UIActions(this);
+    public DevShortcutsActions @DevShortcuts => new DevShortcutsActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -439,25 +474,28 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
         }
     }
-    private int m_XboxSchemeIndex = -1;
-    public InputControlScheme XboxScheme
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
     {
         get
         {
-            if (m_XboxSchemeIndex == -1) m_XboxSchemeIndex = asset.FindControlSchemeIndex("Xbox");
-            return asset.controlSchemes[m_XboxSchemeIndex];
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+    }
+    public interface IPauseActions
+    {
+        void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IDevShortcutsActions
+    {
         void OnColorBlindMode(InputAction.CallbackContext context);
         void OnRapidFireMode(InputAction.CallbackContext context);
         void OnHiContrastMode(InputAction.CallbackContext context);
-    }
-    public interface IUIActions
-    {
-        void OnPause(InputAction.CallbackContext context);
     }
 }

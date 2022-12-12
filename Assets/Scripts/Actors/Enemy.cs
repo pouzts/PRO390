@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : StateAgent, IDestructable
 {
+    [SerializeField] private int pointsAtDeath = 10;
+
     [SerializeField] public RefValue<bool> hasStopped = new();
     protected override void OnStart()
     {
@@ -28,6 +30,6 @@ public class Enemy : StateAgent, IDestructable
 
     public void DestroyObject()
     {
-        
+        GameManager.Instance.Score += pointsAtDeath;
     }
 }

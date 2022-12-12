@@ -22,33 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ColorBlindMode",
-                    "type": "Button",
-                    "id": "dcf57969-e0d7-4471-8664-cbe97d19f47c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "RapidFireMode",
-                    "type": "Button",
-                    "id": "eb126569-c1f7-4ba1-84da-3173195a8563",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "HiContrastMode",
-                    "type": "Button",
-                    "id": "973b3274-4b99-4ba3-847b-9fb2708790ea",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -113,7 +86,7 @@
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox",
+                    "groups": "Gamepad",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -121,10 +94,10 @@
                 {
                     "name": "",
                     "id": "2ba0a05c-6aa7-40c1-adb1-2131845a9c64",
-                    "path": "<XInputController>/leftTrigger",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox",
+                    "groups": "Gamepad",
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -139,44 +112,11 @@
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b166bb2d-d896-438d-95ea-9ab5da07fd1d",
-                    "path": "<Keyboard>/f1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "ColorBlindMode",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a5104747-3485-4505-8934-20231af34ebc",
-                    "path": "<Keyboard>/f3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "RapidFireMode",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "af19ea01-1b56-4512-a860-684a98a4fe85",
-                    "path": "<Keyboard>/f2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "HiContrastMode",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "UI",
+            "name": "Pause",
             "id": "4fea1d72-e786-4c53-b337-dfdc7b38cc1a",
             "actions": [
                 {
@@ -204,11 +144,79 @@
                 {
                     "name": "",
                     "id": "d6b54f8e-4e3b-42cf-b874-79eafc53eda6",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox",
+                    "groups": "Gamepad",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "DevShortcuts",
+            "id": "4b90db2c-25a1-4ff9-9c02-5d6942a3809a",
+            "actions": [
+                {
+                    "name": "ColorBlindMode",
+                    "type": "Button",
+                    "id": "367dc499-b70c-4bf0-b4ca-3e443bc55305",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RapidFireMode",
+                    "type": "Button",
+                    "id": "7206754d-d375-4be0-89e5-4e097fb5c12a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HiContrastMode",
+                    "type": "Button",
+                    "id": "283d920e-722a-4dc9-9d40-675ba107529b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "341916f0-bba2-4d7e-b7f0-64791b93d5ab",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ColorBlindMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "634a7d09-c980-484b-a7ed-e5bd3099a57b",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "RapidFireMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f4aa303-a3f6-4300-9973-442c944b4bcf",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "HiContrastMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -233,12 +241,12 @@
             ]
         },
         {
-            "name": "Xbox",
-            "bindingGroup": "Xbox",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
-                    "devicePath": "<XInputController>",
-                    "isOptional": true,
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
                     "isOR": false
                 }
             ]

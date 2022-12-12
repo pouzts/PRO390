@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs;
 using UnityEngine;
 
 public enum GameState
@@ -14,12 +15,33 @@ public enum GameState
 }
 
 public class GameManager : Singleton<GameManager>
-{
-    [SerializeField] private int PointsAtDeath = 10;
+{   
+    [SerializeField] private GameObject pauseObject;
+    [SerializeField] private SceneTransition sceneTransition;
+    
+    [SerializeField] private int pointsAtDeath = 10;
+    
+    [SerializeField] private string titleSceneName;
+    [SerializeField] private string deathSceneName;
 
     public GameState GameState { get; set; } = GameState.Title;
-    public int TotalScore { get; set; } = 0; 
-    public int Score { get; set; } = 0;
+
+    public bool CanPause { get; set; } = false;
+    
+    public int TotalScore { get; set; }
+
+    private int score = 0;
+    public int Score 
+    {
+        get { return score; }
+        set 
+        {
+            score = value;
+
+            if (score <= 0)
+                score = 0;
+        } 
+    }
 
     private float gameTimer = 0f;
 
@@ -74,6 +96,8 @@ public class GameManager : Singleton<GameManager>
     {
         if (gameTimer > 0)
             return;
+
+        FindObjectOfType<PlayerSpawner>().SpawnPlayer();
     }
 
     private void OnLevel() 
@@ -87,7 +111,7 @@ public class GameManager : Singleton<GameManager>
         if (gameTimer > 0)
             return;
 
-        StartCoroutine(nameof(SubtractPoints));
+        StartCoroutine(SubtractPoints());
     }
 
     public void OnLevelEnd() 
@@ -102,8 +126,16 @@ public class GameManager : Singleton<GameManager>
             return;
     }
 
-    private IEnumerable SubtractPoints()
+    private IEnumerator SubtractPoints()
     {
-        yield return new WaitForSeconds(5f);
+        sceneTransition.TransitionScene(deathSceneName);
+
+        for (int i = 0; i > pointsAtDeath; i++)
+        {
+            Score -= i;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        yield return null;
     }
 }

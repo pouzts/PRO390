@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Pause : MonoBehaviour
 {
@@ -10,7 +11,12 @@ public class Pause : MonoBehaviour
     
     [SerializeField] private AudioSource pauseSound;
 
+    private PlayerControls playerControls;
+
+    private InputAction pauseAction;
+    
     private bool isPaused = false;
+
     public bool IsPaused 
     {
         get { return isPaused; }
@@ -22,12 +28,26 @@ public class Pause : MonoBehaviour
         } 
     }
 
-    private void Start()
+    private void Awake()
     {
+        playerControls = new();
         pauseUI.SetActive(false);
     }
+    
+    private void OnEnable()
+    {
+        pauseAction = playerControls.Pause.Pause;
+        pauseAction.Enable();
+        pauseAction.performed += OnPause;
+    }
 
-    public void OnPause()
+    private void OnDisable()
+    {
+        pauseAction.performed -= OnPause;
+        pauseAction.Disable();
+    }
+
+    public void OnPause(InputAction.CallbackContext callbackContext)
     {
         if (pauseSound != null)
             pauseSound.Play();
@@ -49,7 +69,7 @@ public class Pause : MonoBehaviour
         //pauseUI.SetActive(false);
     }
 
-    public void Exit()
+    public void ExitToTitle()
     {
         IsPaused = false;
         GameManager.Instance.GameState = GameState.Title;
